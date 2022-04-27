@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title><%= title %></title>
+    </head>
+
+    <body>
+
+        <%- include('./partials/header') %> 
+
+        <article>
+            <% for(let section of sections) { %> 
+                <%- include('./partials/sections.ejs', { section } ) %> 
+            <% } %> 
+        </article>
+
+        <% if(1 == 1) { %>
+            <h2>Uno es igual a uno</h2>
+        <% } else { %>
+            <h2>Uno no es igual a uno</h2>
+        <% } %>
+
+        <% for(let i=0; i < 2; i++) { %> 
+            <span>Hola</span> <%= i + 1 %> <br>
+        <% } %> 
+
+        <%- include('./partials/tabla.ejs') %> 
+    </body>
+
+</html>

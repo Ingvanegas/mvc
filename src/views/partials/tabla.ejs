@@ -1,0 +1,33 @@
+<table>
+    <tr>
+        <td>
+            Nombre
+        </td>
+        <td>
+            Precio
+        </td>
+        <td>
+            Descuento
+        </td>
+        <td>
+            Categoria
+        </td>
+    </tr>
+
+    <% for(let dato of datos) { %> 
+       <tr>
+           <td>
+            <%= dato.name %>
+           </td>
+           <td>
+            <%= dato.price %>
+           </td>
+           <td>
+            <%= dato.discount %>
+           </td>
+           <td>
+            <%= dato.category %>
+           </td>
+       </tr>
+    <% } %> 
+</table>
