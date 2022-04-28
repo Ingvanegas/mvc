@@ -15,11 +15,23 @@ app.use(express.static('public'));
 app.use('/personas', personas);
 app.use('/productos', productos);
 
-app.get('/', (req, res) => {
-    //codigo que llama funciones del controlador
-    
+app.get('/', (req, res) => {    
     res.render('index', { 
-        datos,        
+        datos,
+        sections: [
+            {
+                title: 'Titulo 1',
+                description: 'Descripcion 1'
+            },
+            {
+                title: 'Titulo 2',
+                description: 'Descripcion 2'
+            },
+            {
+                title: 'Titulo 3',
+                description: 'Descripcion 3'
+            }
+        ]
      });
 });
 
