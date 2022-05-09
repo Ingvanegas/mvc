@@ -29,7 +29,7 @@ app.use('/productos', productos);
 //storage
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, './src/public/images')
+        cb(null, './src/public/'+ req.params.folder)
     },
     filename: function(req, file, cb) {
         cb(null, `${Date.now()}_img_${path.extname(file.originalname)}`)
@@ -91,10 +91,12 @@ app.get('/prueba/:limit/:offset', (req, res) => {
     res.send(`El limit es igual a ${limit} El offset es igual a ${offset}`);
 });
 
-app.post('/register', uploadFile.single('image'), (req, res) => {
+//ejemplo multer con middleware
+app.post('/register/:folder', uploadFile.single('image'), (req, res) => {
     res.status(200).send('OK')
 });
 
+//ejemplo multer directamente
 const upload = uploadFile.single('image');
 app.post('/registervalidaciones', (req, res) => {
     upload(req, res, (err)=>{

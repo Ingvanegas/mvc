@@ -10,9 +10,18 @@
 
     <body>
 
-        <form enctype="multipart/form-data" action="registervalidaciones" method="POST">
+        <form enctype="multipart/form-data" action="register/documents" method="POST">
             <div>
-                <input type="file" name="image" placeholder="Suba El archivo">
+                <input type="file" name="image" placeholder="Suba El archivo" accept=".pdf">
+            </div>
+            <div>
+                <button type="submit">Enviar</button>
+            </div>
+        </form>
+
+        <form enctype="multipart/form-data" action="register/images" method="POST">
+            <div>
+                <input type="file" name="image" placeholder="Suba El archivo" accept=".png, .jpg, .jpeg">
             </div>
             <div>
                 <button type="submit">Enviar</button>

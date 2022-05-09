@@ -1,4 +1,4 @@
-
+const actions = require('../database/actions')
 const arrayPersona = [];
 
 const controller = {
@@ -21,12 +21,8 @@ const controller = {
         if(arrayPersona.length > 0) {
             id = arrayPersona[arrayPersona.length - 1].id + 1
         } 
-       
-        arrayPersona.push({
-            id,
-            nombre: req.params.nombre,
-            apellido: req.params.apellido
-        });
+
+        actions.create(arrayPersona);
         res.status(201).send(arrayPersona);
     }
 };
