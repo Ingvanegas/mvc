@@ -1,6 +1,9 @@
 const express = require('express');
+const path = require('path');
 const methodOverride = require('method-override');
+const multer = require('multer');
 
+//datos
 const datos = require('./public/productsDataBase.json');
 
 //Routes imports
@@ -9,6 +12,7 @@ const productos = require('./routes/productos');
 
 const app = express();
 
+//middlewares
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 
@@ -22,6 +26,17 @@ app.use('/personas', personas);
 app.use('/productos', productos);
 
 
+//storage
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './src/public/images')
+    },
+    filename: function(req, file, cb) {
+        cb(null, `${Date.now()}_img_${path.extname(file.originalname)}`)
+    }
+});
+
+const uploadFile = multer({storage});
 
 app.get('/', (req, res) => {    
     res.render('index', { 
@@ -74,6 +89,21 @@ app.get('/prueba/:limit/:offset', (req, res) => {
     const limit = req.params.limit;
     const offset = req.params.offset;
     res.send(`El limit es igual a ${limit} El offset es igual a ${offset}`);
+});
+
+app.post('/register', uploadFile.single('image'), (req, res) => {
+    res.status(200).send('OK')
+});
+
+const upload = uploadFile.single('image');
+app.post('/registervalidaciones', (req, res) => {
+    upload(req, res, (err)=>{
+        if(err) {
+            res.status(400).send('Algo salio mal')
+        }
+
+        res.send('OK')
+    })
 });
 
 app.use('/',  (req, res) => { 
