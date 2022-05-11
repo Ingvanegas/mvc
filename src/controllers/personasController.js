@@ -1,6 +1,9 @@
 const actions = require('../database/actions')
 const arrayPersona = [];
 
+
+const path = '\\JSON\\personas.json';
+
 const controller = {
     index: (req, res) => {
         res.status(200).send(arrayPersona);
@@ -15,15 +18,10 @@ const controller = {
         }       
     },
     create: (req, res) => {
-
-        let id = 0;
-
-        if(arrayPersona.length > 0) {
-            id = arrayPersona[arrayPersona.length - 1].id + 1
-        } 
-
-        actions.create(arrayPersona);
-        res.status(201).send(arrayPersona);
+        const body = req.body;
+        actions.path = path;
+        const response = actions.create(body);
+        res.status(201).send(response);
     }
 };
 

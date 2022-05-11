@@ -58,6 +58,10 @@ app.get('/', (req, res) => {
      });
 });
 
+app.get('/productos/view', (req, res) => {    
+    res.render('products', {datos:[]});
+});
+
 app.post('/prueba', (req, res) => {
     const usuario = req.body.txtUser
     const password = req.body.txtPassword

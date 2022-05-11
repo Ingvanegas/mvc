@@ -4,6 +4,6 @@ const ProductosController = require('../controllers/ProductosController')
 
 route.get('/', ProductosController.index);
 route.get('/productos/:id', ProductosController.getById);
-route.post('/productos/:nombre/:precio', ProductosController.create);
+route.post('/producto', ProductosController.create);
 
 module.exports = route;

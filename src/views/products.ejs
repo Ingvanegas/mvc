@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Products</title>
+    </head>
+
+    <body>
+        <form action="/productos/producto" method="POST">
+            <div>
+                <input type="text" name="name" placeholder="Name">
+            </div>
+            <div>
+                <input type="number" name="price" placeholder="Price">
+            </div>
+            <div>
+                <input type="number" min="0" max="100" name="discount"  placeholder="Discount">
+            </div>
+            <div>
+                <label for="selectCategory">Category</label>
+               <select name="category" id="selectCategory">
+                   <option value="Electrodomesticos">Electrodomesticos</option>
+                   <option value="Belleza">Belleza</option>
+                   <option value="Zapatos">Zapatos</option>
+                   <option value="Otra">Otra</option>
+               </select>
+            </div>
+            <div>
+                <button>Crear</button>
+            </div>
+        </form>
+        <table>
+            <tr>
+                <td>
+                    Id
+                </td>
+                <td>
+                    Nombre
+                </td>
+                <td>
+                    Precio
+                </td>
+                <td>
+                    Descuento
+                </td>
+                <td>
+                    Categoria
+                </td>
+            </tr>
+        
+            <% for(let dato of datos) { %> 
+               <tr>
+                <td>
+                    <%= dato.id %>
+                   </td>
+                   <td>
+                    <%= dato.name %>
+                   </td>
+                   <td>
+                    <%= dato.price %>
+                   </td>
+                   <td>
+                    <%= dato.discount %>
+                   </td>
+                   <td>
+                    <%= dato.category %>
+                   </td>
+                   <td>
+                    <button>Modificar</button>
+                    <button>Eliminar</button>
+                   </td>
+               </tr>
+            <% } %> 
+        </table>
+    </body>
+
+</html>
